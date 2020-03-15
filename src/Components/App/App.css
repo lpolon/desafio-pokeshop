@@ -1,3 +1,5 @@
 .App {
-  
+  position: relative;
+  top: 5vh;
+  height: 95vh;
 }
