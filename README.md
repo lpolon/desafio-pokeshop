@@ -25,3 +25,23 @@ O objetivo dessa sessão é explicitar a minha linha de raciocínio, coisas que 
 Como estou começando esse projeto do zero e ele tem um escopo bem definido, começarei definindo os componentes que eu preciso e criar uma versão estática ([é uma sugestão da documentação que eu gosto](https://reactjs.org/docs/thinking-in-react.html)).
 
 O styling das diferentes lojas será feito com inline styles passados pela context API, mas não vou abrir mão do CSS para conseguir a responsividade! Pretendo utilizar a biblioteca Bulma para o layout comum entre as diferentes lojas.
+
+### Componentes que eu vou precisar:
+
+App
+|
+|_Navbar
+|_CardListContainer
+| |_SearchBar
+| |_CardList
+|   |_bigCard 1
+|   |_...
+|   |_bigCard N
+|
+|_ShopCart
+  |_CardList
+  | |_smallCard 1
+  | |_ ...
+  | |_ smallCard N
+  |
+  |_Total
