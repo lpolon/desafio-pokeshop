@@ -45,3 +45,6 @@ App
   | |_ smallCard N
   |
   |_Total
+
+  ## 16/mar/2019
+  continuando a criar os componentes estáticos.
