@@ -1,0 +1,39 @@
+
+.card {
+  width: 200px;
+  margin: 10px;
+}
+
+.card-content {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.card-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  overflow-wrap:break-word;
+}
+
+.card-image {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.card-info-container {
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-info-container img {
+  height: 100%;
+  width: auto;
+  margin-right: .3rem;
+}
+
+.card-info-container p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1rem;
+}
