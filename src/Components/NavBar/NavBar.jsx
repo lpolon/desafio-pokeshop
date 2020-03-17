@@ -12,7 +12,7 @@ export default function NavBar() {
   const handleToggle = () => set(!toggle)
   return (
     <nav
-      className="navbar is-fixed-top"
+      className="navbar"
       role="navigation"
       aria-label="main navigation"
     >
