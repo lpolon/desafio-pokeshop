@@ -32,11 +32,11 @@ App
 |
 |-Navbar ok
 |-CardListContainer
-| |-SearchBar
-| |-CardList
-|   |-bigCard 1
-|   |-...
-|   |-bigCard N
+| |-SearchBar ok
+| |-CardList ok
+|   |-bigCard 1 ok
+|   |-... ok
+|   |-bigCard N ok
 |
 |-ShopCart
   |-CardList (o mesmo? HOC?)
@@ -49,3 +49,25 @@ App
   ## 16/mar/2019
   continuei criando o styling e render estático dos componentes:
   CardList e LargeCard
+
+  ## 17/mar/2019
+  de componente, falta o ShopCard;
+  O ShopCard tem comportamentos bem diferentes no desk e no mobile:
+  se > 769px: ocupa uma coluna da tela. ok
+  se <= 769px: toggle do shop-cart.
+
+  tentativa 1:
+  tentei brincar com as opções de colunas da Bulma, não serve, porque ele tem comportamentos default indesejáveis para mobile. Teria que alterar tantas propriedades que perde o sentido usar em primeiro lugar.
+
+ TODO desk:
+ - media query ok
+ - animar a media query com transition ok
+ - quando shopcart estiver visível, opção de toggle com animação.
+
+  problemas atuais de responsividade:
+  o position relative do .App quebra em telas muito pequenas --> Desisti do is-fixed-top da navbar para simplificar.
+  TODO: controlar essa propriedade por manipulação de DOM e onScroll.
+  Outros problemas:
+ TODO: Diminuir o tamanho do LargeCard em telas pequenas OK
+
+ desligar o hamburger da Bulma. Não é necessário para o projeto.
