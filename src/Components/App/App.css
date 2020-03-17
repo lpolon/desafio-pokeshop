@@ -1,5 +1,34 @@
-.App {
+html {
+  font-size: 12px;
+}
 
+.right-column {
+  width: 0px;
+  visibility: hidden;
+}
 
+@media only screen and (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
 
+  .App .flex-container {
+    display: flex;
+  }
+
+  .right-column, .left-column {
+    padding: .5rem;
+  }
+
+  .left-column {
+    flex-grow: 1;
+  }
+
+  .right-column {
+    visibility: visible;
+    width: 340px;
+    overflow: hidden;
+    transition: ease-out all .3s;
+    transition-delay: .1s;
+  }
 }
