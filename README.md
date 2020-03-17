@@ -56,18 +56,13 @@ App
   se > 769px: ocupa uma coluna da tela. ok
   se <= 769px: toggle do shop-cart.
 
-  tentativa 1:
-  tentei brincar com as opções de colunas da Bulma, não serve, porque ele tem comportamentos default indesejáveis para mobile. Teria que alterar tantas propriedades que perde o sentido usar em primeiro lugar.
-
- TODO desk:
+ TODO:
  - media query ok
  - animar a media query com transition ok
+ - mobile: remover hamburger de todos os tamanhos.
  - quando shopcart estiver visível, opção de toggle com animação.
 
   problemas atuais de responsividade:
-  o position relative do .App quebra em telas muito pequenas --> Desisti do is-fixed-top da navbar para simplificar.
-  TODO: controlar essa propriedade por manipulação de DOM e onScroll.
-  Outros problemas:
- TODO: Diminuir o tamanho do LargeCard em telas pequenas OK
+  - o position relative do .App quebra em telas muito pequenas --> Desisti do is-fixed-top da navbar para simplificar --> controlar essa propriedade por manipulação de DOM e onScroll.
 
- desligar o hamburger da Bulma. Não é necessário para o projeto.
+  - Diminuir o tamanho do LargeCard em telas pequenas OK
