@@ -18,6 +18,11 @@
 
 .card-image {
   padding: 1.5rem 1.5rem 0;
+  text-align: center;
+}
+
+.card-image img {
+  max-height: 100px;
 }
 
 .card-info-container {
@@ -36,4 +41,8 @@
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 1rem;
+}
+
+@media only screen and (max-width: 770px) {
+
 }
