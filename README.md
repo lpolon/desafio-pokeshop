@@ -30,21 +30,22 @@ O styling das diferentes lojas será feito com inline styles passados pela conte
 
 App
 |
-|_Navbar
-|_CardListContainer
-| |_SearchBar
-| |_CardList
-|   |_bigCard 1
-|   |_...
-|   |_bigCard N
+|-Navbar ok
+|-CardListContainer
+| |-SearchBar
+| |-CardList
+|   |-bigCard 1
+|   |-...
+|   |-bigCard N
 |
-|_ShopCart
-  |_CardList
-  | |_smallCard 1
-  | |_ ...
-  | |_ smallCard N
+|-ShopCart
+  |-CardList (o mesmo? HOC?)
+  | |-smallCard 1
+  | |- ...
+  | |- smallCard N
   |
-  |_Total
+  |-Total
 
   ## 16/mar/2019
-  continuando a criar os componentes estáticos.
+  continuei criando o styling e render estático dos componentes:
+  CardList e LargeCard
