@@ -59,7 +59,7 @@ App
  TODO:
  - media query ok
  - animar a media query com transition ok
- - mobile: remover hamburger de todos os tamanhos.
+ - mobile: remover hamburger de todos os tamanhos OK
  - quando shopcart estiver visível, opção de toggle com animação.
 
   problemas atuais de responsividade:

@@ -1,5 +1,5 @@
-import 'bulma/css/bulma.css';
 import 'animate.css';
+import './App.sass';
 import './App.css';
 
 import React from 'react';
