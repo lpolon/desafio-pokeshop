@@ -1,11 +1,11 @@
 import React from 'react';
 import './LargeCard.css';
 
-export default function LargeCard({ name, photo, price }) {
+export default function LargeCard({ name, sprite, price }) {
   return (
     <div className="card">
       <div className="card-image">
-        <img src={photo} alt={name} />
+        <img src={sprite} alt={name} />
       </div>
       <div className="card-content">
         <h2>{name}</h2>
