@@ -3,8 +3,14 @@ html {
 }
 
 .right-column {
-  width: 0px;
-  visibility: hidden;
+  position: absolute;
+  background-color: lightcyan;
+  height: 80%;
+  width: 85%;
+  overflow: hidden;
+  left:15%;
+  top: 40px;
+  z-index: 10;
 }
 
 @media only screen and (min-width: 769px) {
@@ -12,12 +18,13 @@ html {
     font-size: 16px;
   }
 
-  .App .flex-container {
+  .flex-container {
     display: flex;
   }
 
-  .right-column, .left-column {
-    padding: .5rem;
+  .right-column,
+  .left-column {
+    padding: 0.5rem;
   }
 
   .left-column {
@@ -25,10 +32,9 @@ html {
   }
 
   .right-column {
-    visibility: visible;
-    width: 340px;
+    height: 100%;
+    width: 700px;
+    position: static;
     overflow: hidden;
-    transition: ease-out all .3s;
-    transition-delay: .1s;
   }
 }

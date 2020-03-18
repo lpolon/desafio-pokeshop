@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { Fragment } from 'react';
 
 export default function ShopCard() {
   return (
-    <div style={{backgroundColor: "lightblue"}}>
-      oi
-    </div>
-  )
+    <Fragment>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+      <div>oi</div>
+    </Fragment>
+  );
 }
