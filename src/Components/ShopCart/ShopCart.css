@@ -1,0 +1,26 @@
+table {
+  font-size: 16px;
+}
+
+.table-row td {
+  vertical-align: middle;
+}
+
+td.price, .total.value {
+  text-align: right !important;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.header {
+  text-align: center !important;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.total .image-container {
+  height: 1.5rem;
+}

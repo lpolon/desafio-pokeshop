@@ -4,13 +4,23 @@ html {
 
 .right-column {
   position: absolute;
-  background-color: lightcyan;
   height: 80%;
   width: 85%;
-  overflow: hidden;
+  overflow: scroll;
   left:15%;
   top: 40px;
   z-index: 10;
+}
+
+.image-container {
+  height: 1rem;
+  display: inline-block;
+}
+
+.image-container img {
+  height: 100%;
+  width: auto;
+  margin-right: .3rem;
 }
 
 @media only screen and (min-width: 769px) {
@@ -35,6 +45,17 @@ html {
     height: 100%;
     width: 700px;
     position: static;
-    overflow: hidden;
+    overflow: auto;
+  }
+
+  .image-container {
+    height: 1rem;
+    display: inline-block;
+  }
+  
+  .image-container img {
+    height: 100%;
+    width: auto;
+    margin-right: .3rem;
   }
 }
