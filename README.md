@@ -56,13 +56,26 @@ App
   se > 769px: ocupa uma coluna da tela. ok
   se <= 769px: toggle do shop-cart.
 
- TODO:
  - media query ok
  - animar a media query com transition ok
  - mobile: remover hamburger de todos os tamanhos OK
  - quando shopcart estiver visível, opção de toggle com animação.
+    - Cheguei a escrever uma css transition, mas se um click também poderá alterar a visibilidade do shop cart, o controle da animação precisa ser do React.
+      - Usar css para resolver apenas a posição do shop cart para cada tamanho de tela --> absolute para mobile --> column para desktop
+      - 
+      TODO: usar state & react-spring para controlar a visibilidade e animação.
 
-  problemas atuais de responsividade:
-  - o position relative do .App quebra em telas muito pequenas --> Desisti do is-fixed-top da navbar para simplificar --> controlar essa propriedade por manipulação de DOM e onScroll.
+problemas atuais de responsividade:
+- o position relative do .App quebra em telas muito pequenas --> Desisti do is-fixed-top da navbar para simplificar --> 
+TODO: controlar essa propriedade por manipulação de DOM e onScroll.
 
-  - Diminuir o tamanho do LargeCard em telas pequenas OK
+- Diminuir o tamanho do LargeCard em telas pequenas OK
+
+## TO-DO geral
+- Styling de tabela do shopping cart
+- toggle e useSpring do react-spring para animar shopping cart
+- adicionar e remover dados fake do carrinho.
+- Route da loja
+- styling das duas lojas: logo e cor;
+- Fetch da Api
+- mock do fetch
