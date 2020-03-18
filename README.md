@@ -21,7 +21,7 @@ Nesse aplicativo, as lojas de diferentes tipos serão controladas pela barra de 
 # Diário
 O objetivo dessa sessão é explicitar a minha linha de raciocínio, coisas que eu tentei, conforme o andamento do projeto.
 
-## 15/mar/2019
+## 15/mar/2020
 Como estou começando esse projeto do zero e ele tem um escopo bem definido, começarei definindo os componentes que eu preciso e criar uma versão estática ([é uma sugestão da documentação que eu gosto](https://reactjs.org/docs/thinking-in-react.html)).
 
 O styling das diferentes lojas será feito com inline styles passados pela context API, mas não vou abrir mão do CSS para conseguir a responsividade! Pretendo utilizar a biblioteca Bulma para o layout comum entre as diferentes lojas.
@@ -46,11 +46,11 @@ App
   |
   |-Total
 
-  ## 16/mar/2019
+  ## 16/mar/2020
   continuei criando o styling e render estático dos componentes:
   CardList e LargeCard
 
-  ## 17/mar/2019
+  ## 17/mar/2020
   de componente, falta o ShopCard;
   O ShopCard tem comportamentos bem diferentes no desk e no mobile:
   se > 769px: ocupa uma coluna da tela. ok
@@ -71,10 +71,28 @@ TODO: controlar essa propriedade por manipulação de DOM e onScroll.
 
 - Diminuir o tamanho do LargeCard em telas pequenas OK
 
+## 18/mar/2020
+
+## sobre a PokeApi
+Li um tanto da documentação da PokeApi agora e entendi que para buscar uma lista de todos os pokemons e tipos, eu preciso fazer uma chamada para cada pokemon.
+
+Além disso, tendo os dados, eu precisaria inventar um preço de qualquer forma.
+
+__As opções que eu enxergo são:__
+- colar as informações na aplicação --> Não. Perde o sentido remover a complexidade de chamadas Ajax e etc...
+
+- pegar os dados uma vez e colocá-los num servidor --> Não. Acho que no mundo real, a API estaria mais preparada para servir a loja, mas descumpro as regras do desafio dos dados virem da pokeApi.
+
+- fazer literalmente mil chamadas toda vez que carregar a aplicação e dane-se --> Não. Arriscado (bloqueie a aplicação) e não segue o fair use da documentação da pokeapi;
+
+- usar a webApi localStorage para cachear os dados que eu preciso retornados da chamada Ajax. Além de se aproximar do desafio de persistir dados no reload.
+  - https://www.sitepoint.com/cache-fetched-ajax-requests/
+  - https://alligator.io/js/introduction-localstorage-sessionstorage/
+
 ## TO-DO geral
 - Styling de tabela do shopping cart
 - toggle e useSpring do react-spring para animar shopping cart
-- adicionar e remover dados fake do carrinho.
+- adicionar e remover dados fake do carrinho clicando em remove Ou no carrinho
 - Route da loja
 - styling das duas lojas: logo e cor;
 - Fetch da Api
