@@ -5,32 +5,13 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useState } from 'react';
 
-export default function NavBar() {
-  console.log('render navbar!');
-  const [toggle, set] = useState(false);
-
-  const handleToggle = () => set(!toggle)
+export default function NavBar({ handleClick }) {
   return (
-    <nav
-      className="navbar"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item">nome loja</a>
-        <a
-          onClick={handleToggle}
-          role="button"
-          className={`navbar-burger burger ${toggle ? 'is-active' : ''}`}
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
       </div>
-      <div className={`navbar-menu ${toggle ? 'is-active' : ''}`}>
+      <div className="navbar-menu">
         <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">Lojas</a>
@@ -43,11 +24,17 @@ export default function NavBar() {
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <a className="button">
-              <span className="icon">
-                <FA icon={faShoppingCart} />
-              </span>
-            </a>
+            <input
+              onClick={handleClick}
+              className="button"
+              id="switchNormal"
+              type="checkbox"
+              name="switchNormal"
+              className="switch"
+            />
+            <label htmlFor="switchNormal">
+              <FA icon={faShoppingCart} />
+            </label>
           </div>
         </div>
       </div>
