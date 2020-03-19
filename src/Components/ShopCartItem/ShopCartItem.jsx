@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 
-export default function ShopCartItem({ sprite, name, price }) {
+export default function ShopCartItem({ id, handleClick, sprite, name, price }) {
   return (
     <Fragment>
       <td className="is-narrow">
-        <button className="delete is-medium"></button>
+        <button
+          onClick={() => handleClick(id)}
+          className="delete is-medium"
+        ></button>
       </td>
       <td>
         <figure className="image is-64x64">

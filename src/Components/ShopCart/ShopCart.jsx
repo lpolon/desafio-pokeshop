@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './ShopCart.css';
 
 import ShopCartItem from '../ShopCartItem/ShopCartItem';
 
-export default function ShopCart({ pokemons }) {
-  const totalPriceValue = pokemons.reduce((acc, { price }) => acc + price, 0);
+export default function ShopCart({ pokemonsOnCart, handleClick }) {
+  const totalPriceValue = pokemonsOnCart.reduce(
+    (acc, { price }) => acc + price,
+    0
+  );
   return (
     <table className="table is-fullwidth is-hoverable">
       <thead>
@@ -20,10 +23,10 @@ export default function ShopCart({ pokemons }) {
         </tr>
       </thead>
       <tbody>
-        {pokemons.map(({ id, ...pokemon }) => {
+        {pokemonsOnCart.map((pokemon) => {
           return (
-            <tr className="table-row" key={id}>
-              <ShopCartItem {...pokemon} />
+            <tr className="table-row" key={pokemon.id}>
+              <ShopCartItem {...pokemon} handleClick={handleClick} />
             </tr>
           );
         })}

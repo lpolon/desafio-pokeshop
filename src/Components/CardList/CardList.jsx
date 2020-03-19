@@ -3,13 +3,13 @@ import './CardList.css';
 
 import LargeCard from '../LargeCard/LargeCard';
 
-export default function CardList({pokemons}) {
+export default function CardList({pokemonsOnCatalog, handleClick}) {
   return (
     <div className="CardList-container">
-      {pokemons.map(({ id, ...rest }) => {
+      {pokemonsOnCatalog.map((props) => {
         return (
-          <Fragment key={id}>
-            <LargeCard {...rest} />
+          <Fragment key={props.id}>
+            <LargeCard {...props} handleClick={handleClick} />
           </Fragment>
         );
       })}
