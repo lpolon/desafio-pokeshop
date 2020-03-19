@@ -72,6 +72,8 @@ TODO: controlar essa propriedade por manipulação de DOM e onScroll.
 - Diminuir o tamanho do LargeCard em telas pequenas OK
 
 ## 18/mar/2020
+- styling e responsividade do ShopCart OK
+- toggle e useSpring do react-spring para animar shopping cart OK
 
 ## sobre a PokeApi
 Li um tanto da documentação da PokeApi agora e entendi que para buscar uma lista de todos os pokemons e tipos, eu preciso fazer uma chamada para cada pokemon.
@@ -90,10 +92,10 @@ __As opções que eu enxergo são:__
   - https://alligator.io/js/introduction-localstorage-sessionstorage/
 
 ## TO-DO geral
-- Styling de tabela do shopping cart
-- toggle e useSpring do react-spring para animar shopping cart
+- Styling de tabela do shopping cart --> OK
+- toggle e useSpring do react-spring para animar shopping car --> OK
+- Fetch da Api
 - adicionar e remover dados fake do carrinho clicando em remove Ou no carrinho
 - Route da loja
 - styling das duas lojas: logo e cor;
-- Fetch da Api
 - mock do fetch
