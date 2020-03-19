@@ -5,7 +5,6 @@ import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchBar() {
-  console.log('searchBar render!');
   const [searchInput, setSearchInput] = useState('');
 
   const handleChange = (value) => {
