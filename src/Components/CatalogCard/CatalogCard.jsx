@@ -1,7 +1,7 @@
 import React from 'react';
-import './LargeCard.css';
+import './CatalogCard.css';
 
-export default function LargeCard({
+export default function CatalogCard({
   id,
   handleClick,
   name,

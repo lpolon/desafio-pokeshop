@@ -8,7 +8,7 @@ import { animated, useSpring } from 'react-spring';
 
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
-import CardList from '../CardList/CardList';
+import Catalog from '../Catalog/Catalog';
 import ShopCart from '../ShopCart/ShopCart';
 
 const fakePokemonData = [
@@ -134,7 +134,7 @@ export default function App() {
       <div className="flex-container">
         <div className="left-column">
           <SearchBar />
-          <CardList pokemonsOnCatalog={pokemonsOnCatalog} handleClick={handleAddToCart} />
+          <Catalog pokemonsOnCatalog={pokemonsOnCatalog} handleClick={handleAddToCart} />
         </div>
         <animated.div style={props} className="right-column box">
           <ShopCart pokemonsOnCart={pokemonsOnCart} handleClick={handleRemoveFromCart} />
