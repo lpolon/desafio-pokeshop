@@ -1,7 +1,14 @@
 import React from 'react';
 import './LargeCard.css';
 
-export default function LargeCard({ id, handleClick, name, sprite, price }) {
+export default function LargeCard({
+  id,
+  handleClick,
+  name,
+  sprite,
+  price,
+  isOnCart = false,
+}) {
   return (
     <div className="card">
       <div className="card-image">
@@ -16,9 +23,22 @@ export default function LargeCard({ id, handleClick, name, sprite, price }) {
       </div>
       <footer className="card-footer">
         <span className="card-footer-item is-paddingless">
-          <button onClick={() => handleClick(id)} className="button is-link is-light has-background-white is-fullwidth">
-            adicionar
-          </button>
+          {isOnCart ? (
+            <button
+              onClick={() => handleClick(id)}
+              className="button is-light has-background-white is-fullwidth"
+              disabled
+            >
+              adicionado
+            </button>
+          ) : (
+            <button
+              onClick={() => handleClick(id)}
+              className="button is-link is-light has-background-white is-fullwidth"
+            >
+              adicionar
+            </button>
+          )}
         </span>
       </footer>
     </div>
