@@ -4,10 +4,9 @@ html {
 
 .right-column {
   position: absolute;
-  height: 80%;
   width: 85%;
-  overflow: scroll;
-  left:15%;
+  overflow: auto;
+  left: 15%;
   top: 40px;
   z-index: 10;
 }
@@ -20,7 +19,7 @@ html {
 .image-container img {
   height: 100%;
   width: auto;
-  margin-right: .3rem;
+  margin-right: 0.3rem;
 }
 
 @media only screen and (min-width: 769px) {
@@ -28,34 +27,34 @@ html {
     font-size: 16px;
   }
 
-  .flex-container {
-    display: flex;
-  }
-
   .right-column,
   .left-column {
     padding: 0.5rem;
   }
 
-  .left-column {
-    flex-grow: 1;
+  .flex-container {
+    display: flex;
   }
 
   .right-column {
-    height: 100%;
-    width: 700px;
     position: static;
     overflow: auto;
+    flex-grow: 1;
+  }
+
+  .left-column {
+    flex-grow: 2;
+    transition: all 0.3s ease-out;
   }
 
   .image-container {
     height: 1rem;
     display: inline-block;
   }
-  
+
   .image-container img {
     height: 100%;
     width: auto;
-    margin-right: .3rem;
+    margin-right: 0.3rem;
   }
 }
