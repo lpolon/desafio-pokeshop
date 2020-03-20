@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './CatalogCard.css';
 
-import { ThemeContext } from '../App/theme-context';
+import { ThemeContext } from '../App/theme-context-manager';
 
 export default function CatalogCard({
   id,
@@ -11,9 +11,15 @@ export default function CatalogCard({
   price,
   isOnCart = false,
 }) {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className={`card ${isOnCart ? 'is-shadowless' : ''}`} style={{backgroundColor: theme.background, opacity: isOnCart ? '.5': '1'}}>
+    <div
+      className={`card ${isOnCart ? 'is-shadowless' : ''}`}
+      style={{
+        backgroundColor: theme.background,
+        opacity: isOnCart ? '.5' : '1',
+      }}
+    >
       <div className="card-image">
         <img src={sprite} alt={name} />
       </div>
@@ -38,7 +44,7 @@ export default function CatalogCard({
             <button
               onClick={() => handleClick(id)}
               className="button is-link is-light has-background-white is-fullwidth"
-              style={{color: theme.color, opacity: '.8'}}
+              style={{ color: theme.color, opacity: '.8' }}
             >
               adicionar
             </button>
