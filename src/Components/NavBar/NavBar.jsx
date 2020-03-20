@@ -5,13 +5,17 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useContext } from 'react';
 
-import { ThemeContext } from '../App/theme-context';
+import { ThemeContext } from '../App/theme-context-manager';
 
 export default function NavBar({ handleClick }) {
-  const theme = useContext(ThemeContext);
+  const {theme, handleThemeChange} = useContext(ThemeContext);
+  const getThemeString = ({target: {id}}) => {
+    handleThemeChange(id)
+  }
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
+      <div className="navbar-brand" style={{minWidth: '140px'}}>
         <span
           className="navbar-item"
           style={{fontSize: '1.4rem', color: theme.color}}
@@ -24,8 +28,18 @@ export default function NavBar({ handleClick }) {
           <div className="navbar-item has-dropdown is-hoverable">
             <span className="navbar-link">Lojas</span>
             <div className="navbar-dropdown">
-              <span className="navbar-item">Loja 1</span>
-              <span className="navbar-item">Loja 2</span>
+              <span
+              id="ice"
+              className="navbar-item"
+              style={{cursor: 'pointer'}}
+              onClick={getThemeString}
+              >Gelo</span>
+              <span
+              id="ghost"
+              className="navbar-item"
+              style={{cursor: 'pointer'}}
+              onClick={getThemeString}
+              >Fantasma</span>
             </div>
           </div>
         </div>
