@@ -4,7 +4,7 @@ import './index.css';
 import App from './Components/App/App';
 import * as serviceWorker from './serviceWorker';
 
-import { ThemeContextProvider, ThemeContext } from './Components/App/theme-context-manager';
+import { ThemeContextProvider } from './Components/App/theme-context-manager';
 
 ReactDOM.render(
   <ThemeContextProvider>

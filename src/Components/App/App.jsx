@@ -4,7 +4,7 @@ import './App.css';
 import 'bulma-switch';
 import React, { useState, useEffect, useContext } from 'react';
 
-import { ThemeContextProvider, ThemeContext } from './theme-context-manager';
+import { ThemeContext } from './theme-context-manager';
 
 import { animated, useSpring } from 'react-spring';
 
