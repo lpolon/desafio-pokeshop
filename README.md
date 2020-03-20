@@ -149,9 +149,14 @@ const filteredArray = (queryString, arrayOfObjects) =>
 
 ## 20/03/20
 
-### Styling de duas rotas: logo e cor
-- Vou tentar utilizar styled components e Context. A idéia é ter uma chave que defina o styling. Essa mesma chave vai ser usada no primeiro render para o fetch --> Desisti. Depois de ler a documentação, ver exemplos e testar um pouco, me pareceu bem confuso misturar styled-components com as stylesheets que eu já tenho. Vou seguir a documentação da Context API (que é com temas para implementar o que eu preciso)
+### Criar duas lojas - parte 1: Context API --> OK
+- Vou tentar utilizar styled components e Context. A idéia é ter uma chave que defina o styling. Essa mesma chave vai ser usada no primeiro render para o fetch --> Desisti. Depois de ler a documentação, ver exemplos e testar um pouco, me pareceu bem confuso misturar styled-components com as stylesheets que eu já tenho.
 
+Vou seguir a documentação da Context API (que é com temas para implementar o que eu preciso) --> OK
+  - segui [essas instruções](https://reactjs.org/docs/context.html#dynamic-context). [Essa thread](https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-inside-a-child-component) me ajudou MUITO à adaptar para hooks e pro meu caso.
+
+## criar duas lojas - parte 2: Fetch resources da pokeApi
+- agora eu tenho disponível onde eu quiser uma string representando o tipo de pokemon com um valor inicial de ice
 
 ## TO-DO geral
 
@@ -164,8 +169,7 @@ const filteredArray = (queryString, arrayOfObjects) =>
   - filtro de resultados de pesquisa --> OK
   - Resetar state ao confirmar compra + modal (extra)
   - Context API
-    - styling das duas lojas: logo e cor;
-    - Routing da Loja
+    - styling das duas lojas: logo e cor; --> OK
 - Util
   - Fetch da Api com localStorage!
 - Tests:
