@@ -3,10 +3,10 @@ import './Catalog.css';
 
 import CatalogCard from '../CatalogCard/CatalogCard';
 
-export default function Catalog({pokemonsOnCatalog, handleClick}) {
+export default function Catalog({pokemonsArr, handleClick}) {
   return (
     <div className="Catalog-container">
-      {pokemonsOnCatalog.map((props) => {
+      {pokemonsArr.map((props) => {
         return (
           <Fragment key={props.id}>
             <CatalogCard {...props} handleClick={handleClick} />

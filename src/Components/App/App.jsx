@@ -7,8 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { animated, useSpring } from 'react-spring';
 
 import NavBar from '../NavBar/NavBar';
-import SearchBar from '../SearchBar/SearchBar';
-import Catalog from '../Catalog/Catalog';
+import CatalogContainer from '../CatalogContainer/CatalogContainer';
 import ShopCart from '../ShopCart/ShopCart';
 
 const fakePokemonData = [
@@ -83,10 +82,9 @@ export default function App() {
   const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState(fakePokemonData);
   const [pokemonsOnCart, setOnCart] = useState([]);
 
-
-    // if pokemon object has key "isOnCart", toggles it. If not, assign it as true.
+  // if pokemon object has key "isOnCart", toggles it. If not, assign it as true.
   const togglePokemonIsOnCartFlag = (pokemon) => {
-    const pokemonCopy = {...pokemon};
+    const pokemonCopy = { ...pokemon };
     if (pokemonCopy.hasOwnProperty('isOnCart')) {
       const isOnCartValue = pokemonCopy.isOnCart;
       pokemonCopy.isOnCart = !isOnCartValue;
@@ -94,50 +92,76 @@ export default function App() {
     }
     pokemonCopy.isOnCart = true;
     return pokemonCopy;
-  }
+  };
 
   const updatePokemonOnCatalogArr = (index, pokemon, pokemonsOnCatalog) => {
     const pokemonsOnCatalogCopy = [...pokemonsOnCatalog];
     pokemonsOnCatalogCopy.splice(index, 1, pokemon);
     setPokemonsOnCatalog(pokemonsOnCatalogCopy);
-  }
-  const addToCart = (pokemon, pokemonsOnCart) => setOnCart([...pokemonsOnCart, pokemon]);
+  };
+  const addToCart = (pokemon, pokemonsOnCart) =>
+    setOnCart([...pokemonsOnCart, pokemon]);
 
   const removeFromCart = (pokemonIndexInArray, pokemonsOnCart) => {
     const pokemonsOnCartCopy = [...pokemonsOnCart];
     pokemonsOnCartCopy.splice(pokemonIndexInArray, 1);
     setOnCart(pokemonsOnCartCopy);
   };
-  
+
   const handleAddToCart = (idFromEvent) => {
-    const foundPokemonIndex = pokemonsOnCatalog.findIndex(({id: pokemonId, ...pokemon}) => {
-      if(pokemon.hasOwnProperty('isOnCart') && pokemon.isOnCart) return false;
-      return pokemonId === idFromEvent
-    })
+    const foundPokemonIndex = pokemonsOnCatalog.findIndex(
+      ({ id: pokemonId, ...pokemon }) => {
+        if (pokemon.hasOwnProperty('isOnCart') && pokemon.isOnCart)
+          return false;
+        return pokemonId === idFromEvent;
+      }
+    );
     if (foundPokemonIndex === -1) return;
-    const foundFlaggedPokemon = togglePokemonIsOnCartFlag(pokemonsOnCatalog[foundPokemonIndex]);
+    const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
+      pokemonsOnCatalog[foundPokemonIndex]
+    );
     addToCart(foundFlaggedPokemon, pokemonsOnCart);
-    updatePokemonOnCatalogArr(foundPokemonIndex, foundFlaggedPokemon, pokemonsOnCatalog);
-  }
+    updatePokemonOnCatalogArr(
+      foundPokemonIndex,
+      foundFlaggedPokemon,
+      pokemonsOnCatalog
+    );
+  };
 
   const handleRemoveFromCart = (idFromEvent) => {
-    const foundPokemonOnCartIndex = pokemonsOnCart.findIndex(({id: pokemonId}) => pokemonId === idFromEvent)
-    const foundPokemonOnCatalogIndex = pokemonsOnCatalog.findIndex(({id: pokemonId}) => pokemonId === idFromEvent)
-    const foundFlaggedPokemon = togglePokemonIsOnCartFlag(pokemonsOnCatalog[foundPokemonOnCatalogIndex]);
-    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart)
-    updatePokemonOnCatalogArr(foundPokemonOnCatalogIndex, foundFlaggedPokemon, pokemonsOnCatalog)
-  }
+    const foundPokemonOnCartIndex = pokemonsOnCart.findIndex(
+      ({ id: pokemonId }) => pokemonId === idFromEvent
+    );
+    const foundPokemonOnCatalogIndex = pokemonsOnCatalog.findIndex(
+      ({ id: pokemonId }) => pokemonId === idFromEvent
+    );
+    const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
+      pokemonsOnCatalog[foundPokemonOnCatalogIndex]
+    );
+    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart);
+    updatePokemonOnCatalogArr(
+      foundPokemonOnCatalogIndex,
+      foundFlaggedPokemon,
+      pokemonsOnCatalog
+    );
+  };
 
   return (
     <div className="App">
       <NavBar handleClick={handleToggle} />
       <div className="flex-container">
         <div className="left-column">
-          <SearchBar />
-          <Catalog pokemonsOnCatalog={pokemonsOnCatalog} handleClick={handleAddToCart} />
+          <CatalogContainer
+            pokemonsOnCatalog={pokemonsOnCatalog}
+            handleClick={handleAddToCart}
+          />
+
         </div>
         <animated.div style={props} className="right-column box">
-          <ShopCart pokemonsOnCart={pokemonsOnCart} handleClick={handleRemoveFromCart} />
+          <ShopCart
+            pokemonsOnCart={pokemonsOnCart}
+            handleClick={handleRemoveFromCart}
+          />
         </animated.div>
       </div>
     </div>

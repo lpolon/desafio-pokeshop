@@ -1,15 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import './SearchBar.css';
 
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function SearchBar() {
-  const [searchInput, setSearchInput] = useState('');
-
-  const handleChange = (value) => {
-    setSearchInput(value);
-  };
+export default function SearchBar({handleChange, searchInput}) {
 
   return (
     <Fragment>
