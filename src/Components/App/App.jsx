@@ -147,23 +147,22 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <NavBar handleClick={handleToggle} />
-      <div className="flex-container">
-        <div className="left-column">
-          <CatalogContainer
-            pokemonsOnCatalog={pokemonsOnCatalog}
-            handleClick={handleAddToCart}
-          />
-
+      <div className="App">
+        <NavBar handleClick={handleToggle} />
+        <div className="flex-container">
+          <div className="left-column">
+            <CatalogContainer
+              pokemonsOnCatalog={pokemonsOnCatalog}
+              handleClick={handleAddToCart}
+            />
+          </div>
+          <animated.div style={props} className="right-column box">
+            <ShopCart
+              pokemonsOnCart={pokemonsOnCart}
+              handleClick={handleRemoveFromCart}
+            />
+          </animated.div>
         </div>
-        <animated.div style={props} className="right-column box">
-          <ShopCart
-            pokemonsOnCart={pokemonsOnCart}
-            handleClick={handleRemoveFromCart}
-          />
-        </animated.div>
       </div>
-    </div>
   );
 }

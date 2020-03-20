@@ -141,11 +141,17 @@ const filteredArray = (queryString, arrayOfObjects) =>
 - Vou fazer funcionar assim, primeiro, mas acho que dá pra rapidamente implementar uma pesquisa mais legal. ok
 
 - Fiz de um jeito que eu acho melhor de usar!
-  - transforma a string de pesquisa e o nome dos pokemons num objeto. p. ex.: aaabcdd se torna {a: 3, b: 1, c: 1, d: 2}
+  - transforma a string de pesquisa e o nome dos pokemons num objeto. p. ex.: 'aaabcdd' se torna {a: 3, b: 1, c: 1, d: 2}
   - filtra e retorna apenas se:
     - o nome do pokemon conter todos os characteres inputados
     - a quantidade de characteres no nome do pokemon for menor ou igual a quantidade na string de pesquisa.
     - escrevi essas iterações com .find() e com condicionais que tentam falhar (p. ex.: .find() NÃO inclui um character da pesquisa), para não procurar no array inteiro desnecessariamente.
+
+## 20/03/20
+
+### Styling de duas rotas: logo e cor
+- Vou tentar utilizar styled components e Context. A idéia é ter uma chave que defina o styling. Essa mesma chave vai ser usada no primeiro render para o fetch --> Desisti. Depois de ler a documentação, ver exemplos e testar um pouco, me pareceu bem confuso misturar styled-components com as stylesheets que eu já tenho. Vou seguir a documentação da Context API (que é com temas para implementar o que eu preciso)
+
 
 ## TO-DO geral
 

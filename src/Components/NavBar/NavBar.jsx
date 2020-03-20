@@ -3,13 +3,21 @@ import './NavBar.css';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ThemeContext } from '../App/theme-context';
 
 export default function NavBar({ handleClick }) {
+  const theme = useContext(ThemeContext);
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <span className="navbar-item">nome loja</span>
+        <span
+          className="navbar-item"
+          style={{fontSize: '1.4rem', color: theme.color}}
+          >
+            {theme.name}
+            </span>
       </div>
       <div className="navbar-menu">
         <div className="navbar-start">
