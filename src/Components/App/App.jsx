@@ -2,7 +2,9 @@ import 'animate.css';
 import './App.sass';
 import './App.css';
 import 'bulma-switch';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import { ThemeContextProvider, ThemeContext } from './theme-context-manager';
 
 import { animated, useSpring } from 'react-spring';
 
@@ -48,6 +50,8 @@ const fakePokemonData = [
 ];
 
 export default function App() {
+  // const { theme } = useContext(ThemeContext);
+
   const [toggleCart, setToggleCart] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -147,6 +151,7 @@ export default function App() {
   };
 
   return (
+    <ThemeContextProvider>
       <div className="App">
         <NavBar handleClick={handleToggle} />
         <div className="flex-container">
@@ -164,5 +169,6 @@ export default function App() {
           </animated.div>
         </div>
       </div>
+    </ThemeContextProvider>
   );
 }
