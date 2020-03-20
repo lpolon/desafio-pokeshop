@@ -20,12 +20,6 @@ export default function CatalogContainer({ pokemonsOnCatalog, handleClick }) {
     }, {});
   };
 
-  // const filterCatalog = (pokemons, searchInput) => {
-  //   if (searchInput === '') return pokemons;
-  //   return pokemons.filter(({ name }) =>
-  //     name.toLowerCase().includes(searchInput.toLowerCase())
-  //   );
-  // };
 
   const filterCatalog = (pokemons, searchInput) => {
     if (searchInput === '') return pokemons;

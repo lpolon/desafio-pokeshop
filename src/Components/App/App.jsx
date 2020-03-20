@@ -2,7 +2,9 @@ import 'animate.css';
 import './App.sass';
 import './App.css';
 import 'bulma-switch';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import { ThemeContextProvider, ThemeContext } from './theme-context-manager';
 
 import { animated, useSpring } from 'react-spring';
 
@@ -48,6 +50,8 @@ const fakePokemonData = [
 ];
 
 export default function App() {
+  const { theme } = useContext(ThemeContext);
+
   const [toggleCart, setToggleCart] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -60,6 +64,10 @@ export default function App() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+  });
+
+  useEffect(() => {
+    document.title = `PokéShop | ${theme.name}`
   });
 
   // animate toggle
@@ -147,22 +155,22 @@ export default function App() {
   };
 
   return (
-      <div className="App">
-        <NavBar handleClick={handleToggle} />
-        <div className="flex-container">
-          <div className="left-column">
-            <CatalogContainer
-              pokemonsOnCatalog={pokemonsOnCatalog}
-              handleClick={handleAddToCart}
-            />
-          </div>
-          <animated.div style={props} className="right-column box">
-            <ShopCart
-              pokemonsOnCart={pokemonsOnCart}
-              handleClick={handleRemoveFromCart}
-            />
-          </animated.div>
+    <div className="App">
+      <NavBar handleClick={handleToggle} />
+      <div className="flex-container">
+        <div className="left-column">
+          <CatalogContainer
+            pokemonsOnCatalog={pokemonsOnCatalog}
+            handleClick={handleAddToCart}
+          />
         </div>
+        <animated.div style={props} className="right-column box">
+          <ShopCart
+            pokemonsOnCart={pokemonsOnCart}
+            handleClick={handleRemoveFromCart}
+          />
+        </animated.div>
       </div>
+    </div>
   );
 }
