@@ -155,9 +155,11 @@ const filteredArray = (queryString, arrayOfObjects) =>
 Vou seguir a documentação da Context API (que é com temas para implementar o que eu preciso) --> OK
   - segui [essas instruções](https://reactjs.org/docs/context.html#dynamic-context). [Essa thread](https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-inside-a-child-component) me ajudou MUITO à adaptar para hooks e pro meu caso.
 
-## criar duas lojas - parte 2: Fetch resources da pokeApi
-- agora eu tenho disponível onde eu quiser uma string representando o tipo de pokemon com um valor inicial de ice
+## criar duas lojas - parte 2: Fetch resources da pokeApi --> OK
+- agora eu tenho disponível onde eu quiser uma string representando o tipo de pokemon com um valor inicial de ice.
+Essa string é passada para uma função que faz a chamada Ajax para buscar os recursos no endpoint /https://pokeapi.co/api/v2/type/ e depois cada endpoint encontrado é feita uma nova chamada para buscar o pokemon.
 
+- Problema: não tem error handling.. Eu poderia até tirar o try catch...
 ## TO-DO geral
 
 - Styling & layout --> OK
@@ -168,14 +170,16 @@ Vou seguir a documentação da Context API (que é com temas para implementar o 
   - adicionar e remover dados fake do carrinho clicando em remove ou no carrinho --> OK
   - filtro de resultados de pesquisa --> OK
   - Resetar state ao confirmar compra + modal (extra)
-  - Context API
-    - styling das duas lojas: logo e cor; --> OK
-- Util
-  - Fetch da Api com localStorage!
+  - styling das duas lojas: logo e cor com Context Api --> OK
+  - Fetch da Api --> OK
+  - com localStorage! 
+  - lembrar do carrinho do usuário com localStorage (extra)
 - Tests:
   - mock do fetch
   - eu ainda não realmente sei testar componentes _facepalm_
 
 - Coisas menores:
   - controlar o max-width do ShopCart
-  
+
+## BUGs:
+- right-column no mobile fica em cima da navbar quando colapsada.
