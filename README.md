@@ -9,19 +9,16 @@ https://leo-pokeshop.herokuapp.com/
 
 ## Como criar lojas de tipos de pokémon diferentes aproveitando a mesma base de código?
 
-Nesse aplicativo, as lojas de diferentes tipos serão controladas pela barra de navegação (web api window.location) através da lib react-router-dom. Então: example.com/fogo
+Nesse aplicativo, as lojas de diferentes tipos são controladas pela opção da navbar
 
-- chamada Ajax busca os pokemons de fogo e carrega no estado do App;
-- roteador serve os componentes da loja de fogo.
-  - para reutilizar componentes, os estilos que mudam serão passados por inline style (style={{}});
-  - Esses componentes receberão o style object usando a Context API do React:
-    - Os styled componentes estarão subscribed à um Context.provider, utilizando o useContext() hook.
-    - Não vou passar o style obj por props, porque numa aplicação real daria muito mais trabalho de manutenção e muito "props drilling".
+- chamada Ajax busca os pokemons de um tipo e carrega no estado do App;
+- boa parte do styling foi feito com bulma ou stylesheets.
+- os stylings do tema são passados pelo objeto style (css-in-js). O tema é controlado usando a API Context
 
 ### ressalvas:
 
 - Eu entendo que a solução que eu estou propondo é uma aproximação do problema real (a mesma base para a americanas, submarino, etc...). Estou tratando as lojas de tipos de pokemon como **departamentos** e não como **lojas** diferentes.
-- Eu não tenho experiência prática para uma solução verdadeira. Entendo que uma solução real precisaria de uma abordagem mais abrangente do que apenas uma single page application. Por exemplo: alguma ferramenta como ngnix para servir vários domínios com um único web server.
+- Eu não tenho experiência prática para uma solução verdadeira! Entendo que uma solução real precisaria de uma abordagem mais abrangente, Por exemplo: alguma ferramenta como ngnix para servir vários domínios com um único web server. Pelo o que eu pesquisei, entendi que algum serviço tipo amazon E2C seria adequado.
 
 # Diário
 
@@ -32,26 +29,6 @@ O objetivo dessa sessão é explicitar a minha linha de raciocínio, coisas que 
 Como estou começando esse projeto do zero e ele tem um escopo bem definido, começarei definindo os componentes que eu preciso e criar uma versão estática ([é uma sugestão da documentação que eu gosto](https://reactjs.org/docs/thinking-in-react.html)).
 
 O styling das diferentes lojas será feito com inline styles passados pela context API, mas não vou abrir mão do CSS para conseguir a responsividade! Pretendo utilizar a biblioteca Bulma para o layout comum entre as diferentes lojas.
-
-### Componentes que eu vou precisar:
-
-App
-|
-|-Navbar ok
-|-CatalogContainer
-| |-SearchBar ok
-| |-Catalog ok
-| |-bigCard 1 ok
-| |-... ok
-| |-bigCard N ok
-|
-|-ShopCart
-|-Catalog (o mesmo? HOC?)
-| |-smallCard 1
-| |- ...
-| |- smallCard N
-|
-|-Total
 
 ## 16/mar/2020
 
@@ -72,7 +49,7 @@ se <= 769px: toggle do shop-cart.
   - Cheguei a escrever uma css transition, mas se um click também poderá alterar a visibilidade do shop cart, o controle da animação precisa ser do React.
     - Usar css para resolver apenas a posição do shop cart para cada tamanho de tela --> absolute para mobile --> column para desktop
     -
-    TODO: usar state & react-spring para controlar a visibilidade e animação.
+usar state & react-spring para controlar a visibilidade e animação. OK
 
 problemas atuais de responsividade:
 
@@ -131,16 +108,13 @@ Como filtrar?
 
 - "lift state up" do searchInput e o handleChange da SearchBar.
 
-0 a forma mais básica seria:
-
+- a forma mais básica seria de filtrar seria --> OK
 ```javascript
 const filteredArray = (queryString, arrayOfObjects) =>
   arrayOfObjects.filter(({ name }) => name.includes(queryString));
 ```
 
-- Vou fazer funcionar assim, primeiro, mas acho que dá pra rapidamente implementar uma pesquisa mais legal. ok
-
-- Fiz de um jeito que eu acho melhor de usar!
+- Mudei de ideia. Fiz de um jeito que eu acho melhor de usar!
   - transforma a string de pesquisa e o nome dos pokemons num objeto. p. ex.: 'aaabcdd' se torna {a: 3, b: 1, c: 1, d: 2}
   - filtra e retorna apenas se:
     - o nome do pokemon conter todos os characteres inputados
@@ -166,10 +140,16 @@ Essa string é passada para uma função que faz a chamada Ajax para buscar os r
 ## Outras coisas rápidas:
 ### Botão de finalizar compra e resetar o estado --> OK
 
-### outras lojas
+### outras lojas --> OK
 - basta acrescentar a opção, e os estilos. A lista de itens para escolher a loja precisa ser dinâmica.
 
-### salvar estado localmente com localStorage
+- acrescentei para todos os tipos. Afinal, gotta catch'em all!
+
+### salvar estado localmente com localStorage --> WIP
+não deu tempo:
+https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2
+
+https://alligator.io/js/introduction-localstorage-sessionstorage/
 
 # Reflexões & próximos passos
 ## A forma que eu fiz o styling ficou rapidamente desajeitada
@@ -230,5 +210,5 @@ como aprendizado, acredito que seria:
   - controlar o min-width do ShopCart --> OK
 
 ## BUGs:
-- right-column no mobile fica em cima da navbar quando colapsada -->
-- outros bugs porque eu não estava resentando o state direito quando mudava de loja! Imagina se eu tivesse testes...
+- right-column no mobile fica em cima da navbar quando colapsada --> OK
+- outros bugs porque eu não estava resentando o state direito quando mudava de loja!  Imagina se eu tivesse testes... --> OK
