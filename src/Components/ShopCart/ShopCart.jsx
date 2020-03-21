@@ -14,12 +14,12 @@ export default function ShopCart({ pokemonsOnCart = [], handleClick, handleSucce
     0
   );
   return pokemonsOnCart.length === 0 ? (
-    <table
+    <div
       className="table is-fullwidth is-hoverable"
       style={{ fontSize: '2rem', textAlign: 'center' }}
     >
       Adicione algo no carrinho ಠ_ಠ
-    </table>
+    </div>
   ) : (
     <Fragment>
       <table className="table is-fullwidth is-hoverable">
