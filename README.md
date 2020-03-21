@@ -164,15 +164,12 @@ Essa string é passada para uma função que faz a chamada Ajax para buscar os r
 ## ajustes de styling --> OK
 
 ## Outras coisas rápidas:
-### Botão de finalizar compra e resetar o estado:
+### Botão de finalizar compra e resetar o estado --> OK
 
 ### outras lojas
 - basta acrescentar a opção, e os estilos. A lista de itens para escolher a loja precisa ser dinâmica.
 
 ### salvar estado localmente com localStorage
-
-# Próximos passos
-testes!!!
 
 # Reflexões & próximos passos
 ## A forma que eu fiz o styling ficou rapidamente desajeitada
@@ -196,6 +193,9 @@ Não tem. Não cheguei a testar os erros da API. O try-catch é completamente in
 ### props drilling
 apesar de eu ter usado a api de contexto, eu não me sinto completamente apropriado dela e me senti besta de ter o contexto e ficar ajustando as props de style do react-spring com props-drilling. Eu acredito que styled-components facilitaria esse trabalho.
 
+### muitas linhas no App
+penso que uma forma de lidar com isso seria utilizar custom hooks para separar melhor a lógica e tornar a aplicação mais testável e de fácil manutenção.
+
 ## próximos passos:
 como aprendizado, acredito que seria:
 - escrever todos os testes necessários
@@ -210,7 +210,7 @@ como aprendizado, acredito que seria:
   - adicionar e remover dados fake do carrinho clicando em remove ou no carrinho --> OK
   - filtro de resultados de pesquisa --> OK
 
-  - Resetar state ao confirmar compra + modal (extra)
+  - Resetar state ao confirmar compra + modal (extra) --> OK
   
   - styling das duas lojas: logo e cor com Context Api --> OK
   - Fetch da Api --> OK
