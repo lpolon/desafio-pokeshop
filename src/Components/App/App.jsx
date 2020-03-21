@@ -16,6 +16,13 @@ import ShopCart from '../ShopCart/ShopCart';
 import { pokeApi } from '../../Util/pokeApi';
 import typesResourceDictionary from '../../Util/typeResourceDictionary';
 
+import {
+  togglePokemonIsOnCartFlag,
+  updatePokemonOnCatalogArr,
+  addToCart,
+  removeFromCart,
+} from '../../Util/handleCartStateHelpers';
+
 export default function App() {
   const { theme } = useContext(ThemeContext);
 
