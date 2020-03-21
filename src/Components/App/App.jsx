@@ -29,8 +29,19 @@ export default function App() {
   const [toggleCart, setToggleCart] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
+  // add remove pokemons on cart
+  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState([]);
+  const [pokemonsOnCart, setOnCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   // show/hide cart logic
   const handleToggle = () => setToggleCart(!toggleCart);
+
+  const resetAppState = () => {
+    setOnCart([]);
+    setIsLoading(false);
+    setToggleCart(false);
+  }
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -46,10 +57,12 @@ export default function App() {
 
   // animate toggle
   const getAnimatedPropsFromWidth = () => {
-    if (width > 769) return {
+    if (width > 769)
+      return {
         opacity: toggleCart ? '1' : '0',
         height: '100%',
-        width: toggleCart ? '100%' : '0%',
+        width: toggleCart ? '1px' : '0px',
+        minWidth: toggleCart ? '400px' : '0px',
       };
     return {
       opacity: toggleCart ? '1' : '0',
@@ -59,11 +72,6 @@ export default function App() {
   };
   const props = useSpring(getAnimatedPropsFromWidth());
 
-  // add remove pokemons on chart
-  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState([]);
-  const [pokemonsOnCart, setOnCart] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
   const fetchAllPokemonsFromType = async ({ id }) => {
     setIsLoading(true);
     const response = await pokeApi.getAllPokemonsFromType(
@@ -71,9 +79,7 @@ export default function App() {
       typesResourceDictionary,
       fetch
     );
-    setIsLoading(false);
-    setOnCart([]);
-    setToggleCart(false);
+    resetAppState();
     setPokemonsOnCatalog(response);
   };
 

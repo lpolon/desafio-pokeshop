@@ -31,13 +31,13 @@ export default function NavBar({ handleClick }) {
               <span
               id="ice"
               className="navbar-item"
-              style={{cursor: 'pointer'}}
+              style={{cursor: 'pointer', fontSize: '1.3rem'}}
               onClick={getThemeString}
               >Gelo</span>
               <span
               id="ghost"
               className="navbar-item"
-              style={{cursor: 'pointer'}}
+              style={{cursor: 'pointer', fontSize: '1.3rem'}}
               onClick={getThemeString}
               >Fantasma</span>
             </div>
