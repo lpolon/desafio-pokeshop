@@ -2,6 +2,7 @@ import 'animate.css';
 import './App.sass';
 import './App.css';
 import 'bulma-switch';
+import 'bulma-pageloader';
 import React, { useState, useEffect, useContext } from 'react';
 
 import { ThemeContext } from './theme-context-manager';
@@ -12,42 +13,8 @@ import NavBar from '../NavBar/NavBar';
 import CatalogContainer from '../CatalogContainer/CatalogContainer';
 import ShopCart from '../ShopCart/ShopCart';
 
-const fakePokemonData = [
-  {
-    id: 1,
-    name: 'Fletchinder',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 20,
-  },
-  {
-    id: 2,
-    name: 'ekans',
-    sprite: '/pokeball.png',
-    price: 10,
-  },
-  {
-    id: 3,
-    name: 'Snorlax',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 50,
-  },
-  {
-    id: 4,
-    name: 'Lugia',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 200,
-  },
-  {
-    id: 5,
-    name: 'Mewtwo',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 300,
-  },
-];
+import { pokeApi } from '../../Util/pokeApi';
+import typesResourceDictionary from '../../Util/typeResourceDictionary';
 
 export default function App() {
   const { theme } = useContext(ThemeContext);
@@ -67,7 +34,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    document.title = `PokéShop | ${theme.name}`
+    document.title = `PokéShop | ${theme.name}`;
   });
 
   // animate toggle
@@ -87,8 +54,24 @@ export default function App() {
   const props = useSpring(getAnimatedPropsFromWidth());
 
   // add remove pokemons on chart
-  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState(fakePokemonData);
+  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState([]);
   const [pokemonsOnCart, setOnCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchAllPokemonsFromType = async ({ id }) => {
+    setIsLoading(true);
+    const response = await pokeApi.getAllPokemonsFromType(
+      id,
+      typesResourceDictionary,
+      fetch
+    );
+    setIsLoading(false);
+    setPokemonsOnCatalog(response);
+  };
+
+  useEffect(() => {
+    fetchAllPokemonsFromType(theme);
+  }, [theme]);
 
   // if pokemon object has key "isOnCart", toggles it. If not, assign it as true.
   const togglePokemonIsOnCartFlag = (pokemon) => {
@@ -154,7 +137,9 @@ export default function App() {
     );
   };
 
-  return (
+  return isLoading ? (
+    <PageLoader />
+  ) : (
     <div className="App">
       <NavBar handleClick={handleToggle} />
       <div className="flex-container">
@@ -172,5 +157,11 @@ export default function App() {
         </animated.div>
       </div>
     </div>
+  );
+}
+
+function PageLoader() {
+  return (
+<div className="pageloader is-active is-info"><span className="title">Gotta Catch 'Em All!</span></div>
   );
 }

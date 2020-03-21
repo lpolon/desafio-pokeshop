@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 
-export default function ShopCartItem({ id, handleClick, sprite, name, price }) {
+export default function ShopCartItem({
+  id,
+  handleClick,
+  sprites: {front_default: sprite},
+  base_experience: price,
+  name,
+}) {
   return (
     <Fragment>
       <td className="is-narrow">
@@ -11,7 +17,7 @@ export default function ShopCartItem({ id, handleClick, sprite, name, price }) {
       </td>
       <td>
         <figure className="image is-64x64">
-          <img src={sprite} alt="" />
+          <img src={sprite === null ? '/pokeball.png': sprite} alt="" />
         </figure>
       </td>
       <td>{name}</td>

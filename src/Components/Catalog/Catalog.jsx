@@ -3,7 +3,7 @@ import './Catalog.css';
 
 import CatalogCard from '../CatalogCard/CatalogCard';
 
-export default function Catalog({pokemonsArr, handleClick}) {
+export default function Catalog({pokemonsArr = [], handleClick}) {
   return (
     <div className="Catalog-container">
       {pokemonsArr.map((props) => {

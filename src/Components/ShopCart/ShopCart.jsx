@@ -5,9 +5,13 @@ import './ShopCart.css';
 
 import ShopCartItem from '../ShopCartItem/ShopCartItem';
 
-export default function ShopCart({ pokemonsOnCart, handleClick }) {
+export default function ShopCart({ pokemonsOnCart = [], handleClick }) {
   const totalPriceValue = pokemonsOnCart.reduce(
-    (acc, { price }) => acc + price,
+    (acc, { base_experience: price }) => {
+      
+      if(typeof price !== 'number') throw new Error('preço não é número!')
+      return acc + price;
+    },
     0
   );
   return (

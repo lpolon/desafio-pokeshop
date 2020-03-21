@@ -7,8 +7,8 @@ export default function CatalogCard({
   id,
   handleClick,
   name,
-  sprite,
-  price,
+  sprites: {front_default: sprite},
+  base_experience: price,
   isOnCart = false,
 }) {
   const { theme } = useContext(ThemeContext);
@@ -21,7 +21,7 @@ export default function CatalogCard({
       }}
     >
       <div className="card-image">
-        <img src={sprite} alt={name} />
+        <img src={sprite === null ? '/pokeball.png': sprite} alt={name} />
       </div>
       <div className="card-content">
         <h2>{name}</h2>
