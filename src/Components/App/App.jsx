@@ -38,9 +38,7 @@ export default function App() {
   const handleToggle = () => setToggleCart(!toggleCart);
 
   const resetAppState = () => {
-    setOnCart([]);
-    setIsLoading(false);
-    setToggleCart(false);
+    fetchAllPokemonsFromType(theme)
   }
 
   useEffect(() => {
@@ -79,7 +77,9 @@ export default function App() {
       typesResourceDictionary,
       fetch
     );
-    resetAppState();
+    setOnCart([]);
+    setIsLoading(false);
+    setToggleCart(false);
     setPokemonsOnCatalog(response);
   };
 
@@ -145,6 +145,7 @@ export default function App() {
           <ShopCart
             pokemonsOnCart={pokemonsOnCart}
             handleClick={handleRemoveFromCart}
+            handleSuccess={resetAppState}
           />
         </animated.div>
       </div>
