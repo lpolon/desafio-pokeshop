@@ -73,6 +73,7 @@ export default function App() {
     );
     setIsLoading(false);
     setOnCart([]);
+    setToggleCart(false);
     setPokemonsOnCatalog(response);
   };
 
