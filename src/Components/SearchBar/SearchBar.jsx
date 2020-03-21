@@ -1,32 +1,51 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './SearchBar.css';
 
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function SearchBar({handleChange, searchInput}) {
+import { animated, useSpring } from 'react-spring';
+
+export default function SearchBar({
+  handleChange,
+  searchInput,
+  toggleCartValue,
+  width,
+}) {
+  const handleAnimatedProps = () => {
+    if (width > 769)
+      return {
+        zIndex: '1',
+      };
+    return {
+      opacity: toggleCartValue ? '0' : '1',
+    };
+  };
+
+  const props = useSpring(handleAnimatedProps());
 
   return (
-    <Fragment>
-      <div className="search-input control has-icons-left has-icons-right">
-        <input
-          type="text"
-          name="search"
-          placeholder="Nome do Pokémon"
-          className="input is-info"
-          value={searchInput}
-          onChange={({ target: { value } }) => handleChange(value)}
-        />
-        <span className="icon is-small is-left">
-          <FA icon={faSearch} />
-        </span>
-        <span className="icon is-small is-right">
-          {!searchInput ? null : (
-            <RemoveSearchInputButton handleChange={handleChange} />
-          )}
-        </span>
-      </div>
-    </Fragment>
+    <animated.div
+      style={props}
+      className="search-input control has-icons-left has-icons-right"
+    >
+      <input
+        type="text"
+        name="search"
+        placeholder="Nome do Pokémon"
+        className="input is-info"
+        value={searchInput}
+        onChange={({ target: { value } }) => handleChange(value)}
+      />
+      <span className="icon is-small is-left">
+        <FA icon={faSearch} />
+      </span>
+      <span className="icon is-small is-right">
+        {!searchInput ? null : (
+          <RemoveSearchInputButton handleChange={handleChange} />
+        )}
+      </span>
+    </animated.div>
   );
 }
 

@@ -4,11 +4,9 @@ html {
 
 .right-column {
   position: absolute;
-  width: 85%;
   overflow: auto;
   left: 15%;
   top: 40px;
-  z-index: 10;
 }
 
 .image-container {
@@ -39,7 +37,7 @@ html {
   .right-column {
     position: static;
     overflow: auto;
-    flex-grow: 0;
+    flex-grow: 1;
   }
 
   .left-column {

@@ -46,8 +46,7 @@ export default function App() {
 
   // animate toggle
   const getAnimatedPropsFromWidth = () => {
-    if (width > 769)
-      return {
+    if (width > 769) return {
         opacity: toggleCart ? '1' : '0',
         height: '100%',
         width: toggleCart ? '100%' : '0%',
@@ -129,6 +128,8 @@ export default function App() {
       <div className="flex-container">
         <div className="left-column">
           <CatalogContainer
+            toggleCartValue={toggleCart}
+            width={width}
             pokemonsOnCatalog={pokemonsOnCatalog}
             handleClick={handleAddToCart}
           />
