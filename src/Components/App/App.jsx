@@ -73,38 +73,13 @@ export default function App() {
       fetch
     );
     setIsLoading(false);
+    setOnCart([]);
     setPokemonsOnCatalog(response);
   };
 
   useEffect(() => {
     fetchAllPokemonsFromType(theme);
   }, [theme]);
-
-  // if pokemon object has key "isOnCart", toggles it. If not, assign it as true.
-  const togglePokemonIsOnCartFlag = (pokemon) => {
-    const pokemonCopy = { ...pokemon };
-    if (pokemonCopy.hasOwnProperty('isOnCart')) {
-      const isOnCartValue = pokemonCopy.isOnCart;
-      pokemonCopy.isOnCart = !isOnCartValue;
-      return pokemonCopy;
-    }
-    pokemonCopy.isOnCart = true;
-    return pokemonCopy;
-  };
-
-  const updatePokemonOnCatalogArr = (index, pokemon, pokemonsOnCatalog) => {
-    const pokemonsOnCatalogCopy = [...pokemonsOnCatalog];
-    pokemonsOnCatalogCopy.splice(index, 1, pokemon);
-    setPokemonsOnCatalog(pokemonsOnCatalogCopy);
-  };
-  const addToCart = (pokemon, pokemonsOnCart) =>
-    setOnCart([...pokemonsOnCart, pokemon]);
-
-  const removeFromCart = (pokemonIndexInArray, pokemonsOnCart) => {
-    const pokemonsOnCartCopy = [...pokemonsOnCart];
-    pokemonsOnCartCopy.splice(pokemonIndexInArray, 1);
-    setOnCart(pokemonsOnCartCopy);
-  };
 
   const handleAddToCart = (idFromEvent) => {
     const foundPokemonIndex = pokemonsOnCatalog.findIndex(
@@ -118,11 +93,12 @@ export default function App() {
     const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
       pokemonsOnCatalog[foundPokemonIndex]
     );
-    addToCart(foundFlaggedPokemon, pokemonsOnCart);
+    addToCart(foundFlaggedPokemon, pokemonsOnCart, setOnCart);
     updatePokemonOnCatalogArr(
       foundPokemonIndex,
       foundFlaggedPokemon,
-      pokemonsOnCatalog
+      pokemonsOnCatalog,
+      setPokemonsOnCatalog
     );
   };
 
@@ -136,11 +112,12 @@ export default function App() {
     const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
       pokemonsOnCatalog[foundPokemonOnCatalogIndex]
     );
-    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart);
+    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart, setOnCart);
     updatePokemonOnCatalogArr(
       foundPokemonOnCatalogIndex,
       foundFlaggedPokemon,
-      pokemonsOnCatalog
+      pokemonsOnCatalog,
+      setPokemonsOnCatalog
     );
   };
 
@@ -169,6 +146,8 @@ export default function App() {
 
 function PageLoader() {
   return (
-<div className="pageloader is-active is-info"><span className="title">Gotta Catch 'Em All!</span></div>
+    <div className="pageloader is-active is-info">
+      <span className="title">Gotta Catch 'Em All!</span>
+    </div>
   );
 }
