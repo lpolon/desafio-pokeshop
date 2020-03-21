@@ -18,6 +18,3 @@ export default {
   dark: 17,
   fairy: 18,
 };
-
-// ice
-// ghost
