@@ -20,8 +20,21 @@ html {
   margin-right: 0.3rem;
 }
 
-@media only screen and (min-width: 769px) {
+.open-cart {
+  opacity: 1;
+  height: 85%;
+  width: 85%;
+  transition: all 0.3s ease-in;
+}
 
+.close-cart {
+  opacity: 0;
+  height: 0;
+  width: 85%;
+  transition: all 0.3s ease-out;
+}
+
+@media only screen and (min-width: 769px) {
   .right-column,
   .left-column {
     padding: 0.5rem;
@@ -52,5 +65,20 @@ html {
     height: 100%;
     width: auto;
     margin-right: 0.3rem;
+  }
+
+  .open-cart {
+    height: 100%;
+    opacity: 1;
+    min-width: 400px;
+    transition: min-width 0.3s ease-out;
+  }
+
+  .close-cart {
+    opacity: 0;
+    width: 0px;
+    min-width: 0px;
+    height: 100%;
+    transition: all 0.3s ease-out;
   }
 }

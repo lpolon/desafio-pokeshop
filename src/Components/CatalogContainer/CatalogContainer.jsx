@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import Catalog from '../Catalog/Catalog';
 
-export default function CatalogContainer({ pokemonsOnCatalog, handleClick, toggleCartValue, width }) {
+export default function CatalogContainer({ pokemonsOnCatalog, handleClick, toggleCartValue }) {
   const [searchInput, setSearchInput] = useState('');
 
   const handleChange = (value) => {
@@ -49,7 +49,6 @@ export default function CatalogContainer({ pokemonsOnCatalog, handleClick, toggl
   return (
     <Fragment>
       <SearchBar searchInput={searchInput} handleChange={handleChange} toggleCartValue={toggleCartValue}
-      width={width}
       />
       <Catalog pokemonsArr={pokemons} handleClick={handleClick} />
     </Fragment>

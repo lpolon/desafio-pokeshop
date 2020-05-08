@@ -25,9 +25,10 @@ export default function SearchBar({
   const props = useSpring(handleAnimatedProps());
 
   return (
-    <animated.div
-      style={props}
-      className="search-input control has-icons-left has-icons-right"
+    <div
+      className={`search-input control has-icons-left has-icons-right ${
+        toggleCartValue ? 'search-input-open-cart' : 'search-input-close-cart'
+      }`}
     >
       <input
         type="text"
@@ -45,7 +46,7 @@ export default function SearchBar({
           <RemoveSearchInputButton handleChange={handleChange} />
         )}
       </span>
-    </animated.div>
+    </div>
   );
 }
 

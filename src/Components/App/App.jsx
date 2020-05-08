@@ -141,7 +141,11 @@ export default function App() {
             handleClick={handleAddToCart}
           />
         </div>
-        <animated.div style={props} className="right-column box">
+        <div
+          className={`right-column box ${
+            toggleCart ? 'open-cart' : 'close-cart'
+          }`}
+        >
           <ShopCart
             pokemonsOnCart={pokemonsOnCart}
             handleClick={handleRemoveFromCart}
