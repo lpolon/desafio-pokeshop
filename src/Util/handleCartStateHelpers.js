@@ -1,5 +1,5 @@
 // if pokemon object has key "isOnCart", toggles it. If not, assign it as true.
-export const togglePokemonIsOnCartFlag = (pokemon) => {
+export const togglePokemonIsOnCartFlag = pokemon => {
   const pokemonCopy = { ...pokemon };
   if (pokemonCopy.hasOwnProperty('isOnCart')) {
     const isOnCartValue = pokemonCopy.isOnCart;
@@ -14,7 +14,7 @@ export const updatePokemonOnCatalogArr = (
   index,
   pokemon,
   pokemonsOnCatalog,
-  setFn
+  setFn,
 ) => {
   const pokemonsOnCatalogCopy = [...pokemonsOnCatalog];
   pokemonsOnCatalogCopy.splice(index, 1, pokemon);

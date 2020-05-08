@@ -15,10 +15,10 @@ export const pokeApi = {
         pokemonsResourceEndPoints.push(url);
       });
       const jsonArr = await Promise.all(
-        pokemonsResourceEndPoints.map(async (endpoint) => {
+        pokemonsResourceEndPoints.map(async endpoint => {
           const response = await fetch(endpoint);
           return response.json();
-        })
+        }),
       );
       return jsonArr;
     } catch (error) {

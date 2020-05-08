@@ -6,8 +6,8 @@ export const ThemeContext = React.createContext({
   // setTheme: () => {},
 });
 
-export const ThemeContextProvider = (props) => {
-  const handleThemeChange = (themeString) => {
+export const ThemeContextProvider = props => {
+  const handleThemeChange = themeString => {
     setTheme({
       theme: themes.getTheme(themeString),
       handleThemeChange,
