@@ -16,6 +16,11 @@
   transition: all 0.3s ease;
 }
 
+.remove-button {
+  opacity: 1;
+  animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
 /* desktop */
 @media only screen and (min-width: 769px) {
   .search-input-open-cart {
@@ -23,6 +28,19 @@
   }
 
   .search-input-close-cart {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    -webkit-transform: translateZ(80px);
+    transform: translateZ(80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     opacity: 1;
   }
 }

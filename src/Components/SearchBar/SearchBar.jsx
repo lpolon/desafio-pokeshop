@@ -4,26 +4,11 @@ import './SearchBar.css';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { animated, useSpring } from 'react-spring';
-
 export default function SearchBar({
   handleChange,
   searchInput,
   toggleCartValue,
-  width,
 }) {
-  const handleAnimatedProps = () => {
-    if (width > 769)
-      return {
-        zIndex: '1',
-      };
-    return {
-      opacity: toggleCartValue ? '0' : '1',
-    };
-  };
-
-  const props = useSpring(handleAnimatedProps());
-
   return (
     <div
       className={`search-input control has-icons-left has-icons-right ${
@@ -52,10 +37,7 @@ export default function SearchBar({
 
 function RemoveSearchInputButton({ handleChange }) {
   return (
-    <div
-      className="block animated fadeIn"
-      style={{ animationDuration: '0.3s' }}
-    >
+    <div className="block remove-button">
       <button onClick={() => handleChange('')} className="delete"></button>
     </div>
   );

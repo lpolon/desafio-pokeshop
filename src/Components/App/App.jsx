@@ -1,93 +1,65 @@
-import 'animate.css';
-import './App.sass';
-import './App.css';
-import 'bulma-switch';
-import 'bulma-pageloader';
-import React, { useState, useEffect, useContext } from 'react';
+import 'animate.css'
+import './App.sass'
+import './App.css'
+import 'bulma-switch'
+import 'bulma-pageloader'
+import React, { useState, useEffect, useContext } from 'react'
 
-import { ThemeContext } from './theme-context-manager';
+import { ThemeContext } from './theme-context-manager'
 
-import { animated, useSpring } from 'react-spring';
+import NavBar from '../NavBar/NavBar'
+import CatalogContainer from '../CatalogContainer/CatalogContainer'
+import ShopCart from '../ShopCart/ShopCart'
 
-import NavBar from '../NavBar/NavBar';
-import CatalogContainer from '../CatalogContainer/CatalogContainer';
-import ShopCart from '../ShopCart/ShopCart';
-
-import { pokeApi } from '../../Util/pokeApi';
-import typesResourceDictionary from '../../Util/typeResourceDictionary';
+import { pokeApi } from '../../Util/pokeApi'
+import typesResourceDictionary from '../../Util/typeResourceDictionary'
 
 import {
   togglePokemonIsOnCartFlag,
   updatePokemonOnCatalogArr,
   addToCart,
   removeFromCart,
-} from '../../Util/handleCartStateHelpers';
+} from '../../Util/handleCartStateHelpers'
 
 export default function App() {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)
 
-  const [toggleCart, setToggleCart] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [toggleCart, setToggleCart] = useState(false)
 
   // add remove pokemons on cart
-  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState([]);
-  const [pokemonsOnCart, setOnCart] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [pokemonsOnCatalog, setPokemonsOnCatalog] = useState([])
+  const [pokemonsOnCart, setOnCart] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   // show/hide cart logic
-  const handleToggle = () => setToggleCart(!toggleCart);
+  const handleToggle = () => setToggleCart(!toggleCart)
 
   const resetAppState = () => {
     fetchAllPokemonsFromType(theme)
   }
 
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
-
-  useEffect(() => {
-    document.title = `PokéShop | ${theme.name}`;
-  });
-
-  // animate toggle
-  const getAnimatedPropsFromWidth = () => {
-    if (width > 769)
-      return {
-        opacity: toggleCart ? '1' : '0',
-        height: '100%',
-        width: toggleCart ? '1px' : '0px',
-        minWidth: toggleCart ? '400px' : '0px',
-      };
-    return {
-      opacity: toggleCart ? '1' : '0',
-      height: toggleCart ? '85%' : '0%',
-      width: '85%',
-    };
-  };
-  const props = useSpring(getAnimatedPropsFromWidth());
+    document.title = `PokéShop | ${theme.name}`
+  })
 
   const fetchAllPokemonsFromType = async ({ id }) => {
-    setIsLoading(true);
+    setIsLoading(true)
     const response = await pokeApi.getAllPokemonsFromType(
       id,
       typesResourceDictionary,
-      fetch
-    );
-    setOnCart([]);
-    setIsLoading(false);
-    setToggleCart(false);
-    setPokemonsOnCatalog(response);
-  };
+      fetch,
+    )
+    setOnCart([])
+    setIsLoading(false)
+    setToggleCart(false)
+    setPokemonsOnCatalog(response)
+  }
 
   useEffect(() => {
-    fetchAllPokemonsFromType(theme);
-  }, [theme]);
+    fetchAllPokemonsFromType(theme)
+  }, [theme])
 
-  const handleAddToCart = (idFromEvent) => {
+  const handleAddToCart = idFromEvent => {
     const foundPokemonIndex = pokemonsOnCatalog.findIndex(
       ({ id: pokemonId, ...pokemon }) => {
         if (pokemon.hasOwnProperty('isOnCart') && pokemon.isOnCart)
@@ -97,35 +69,35 @@ export default function App() {
     );
     if (foundPokemonIndex === -1) return;
     const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
-      pokemonsOnCatalog[foundPokemonIndex]
-    );
-    addToCart(foundFlaggedPokemon, pokemonsOnCart, setOnCart);
+      pokemonsOnCatalog[foundPokemonIndex],
+    )
+    addToCart(foundFlaggedPokemon, pokemonsOnCart, setOnCart)
     updatePokemonOnCatalogArr(
       foundPokemonIndex,
       foundFlaggedPokemon,
       pokemonsOnCatalog,
-      setPokemonsOnCatalog
-    );
-  };
+      setPokemonsOnCatalog,
+    )
+  }
 
-  const handleRemoveFromCart = (idFromEvent) => {
+  const handleRemoveFromCart = idFromEvent => {
     const foundPokemonOnCartIndex = pokemonsOnCart.findIndex(
-      ({ id: pokemonId }) => pokemonId === idFromEvent
-    );
+      ({ id: pokemonId }) => pokemonId === idFromEvent,
+    )
     const foundPokemonOnCatalogIndex = pokemonsOnCatalog.findIndex(
-      ({ id: pokemonId }) => pokemonId === idFromEvent
-    );
+      ({ id: pokemonId }) => pokemonId === idFromEvent,
+    )
     const foundFlaggedPokemon = togglePokemonIsOnCartFlag(
-      pokemonsOnCatalog[foundPokemonOnCatalogIndex]
-    );
-    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart, setOnCart);
+      pokemonsOnCatalog[foundPokemonOnCatalogIndex],
+    )
+    removeFromCart(foundPokemonOnCartIndex, pokemonsOnCart, setOnCart)
     updatePokemonOnCatalogArr(
       foundPokemonOnCatalogIndex,
       foundFlaggedPokemon,
       pokemonsOnCatalog,
-      setPokemonsOnCatalog
-    );
-  };
+      setPokemonsOnCatalog,
+    )
+  }
 
   return isLoading ? (
     <PageLoader />
@@ -136,7 +108,6 @@ export default function App() {
         <div className="left-column">
           <CatalogContainer
             toggleCartValue={toggleCart}
-            width={width}
             pokemonsOnCatalog={pokemonsOnCatalog}
             handleClick={handleAddToCart}
           />
@@ -151,10 +122,10 @@ export default function App() {
             handleClick={handleRemoveFromCart}
             handleSuccess={resetAppState}
           />
-        </animated.div>
+        </div>
       </div>
     </div>
-  );
+  )
 }
 
 function PageLoader() {
@@ -162,5 +133,5 @@ function PageLoader() {
     <div className="pageloader is-active is-info">
       <span className="title">Gotta Catch 'Em All!</span>
     </div>
-  );
+  )
 }
